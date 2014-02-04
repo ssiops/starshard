@@ -1,0 +1,16 @@
+{
+  "name": "Starshard",
+  "version": "4.0.0",
+  "description": "SFEI Systems v4 - SSI Network Infrastructure",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akasfei/starshard"
+  },
+  "author": "SFEI Systems Inc.",
+  "dependencies": {
+    "express": "~3.4.0",
+    "mongodb": "~1.3.0",
+    "redis": "~0.10.0",
+    "connect-redis": "~1.4.0"
+  }
+}
