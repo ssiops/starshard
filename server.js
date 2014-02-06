@@ -6,6 +6,7 @@ var express = require('express');
 var redis = require('redis');
 var redisClient = redis.createClient();
 var RedisStore = require('connect-redis')(express);
+var init = require('./lib/init.js');
 
 console.log('[%s]\nSystem started. Initializing system parameters.', new Date());
 
@@ -28,6 +29,8 @@ server.configure('development', function(){
 server.configure('production', function(){
   server.use(express.errorHandler());
 });
+
+
 
 server.listen(80, function(){
   console.log("SFEI Systems operating on port %d in %s mode. [%s]", 80, server.settings.env, new Date());
