@@ -28,8 +28,23 @@ Shard.json will provide basic information for the base system. Shard properties 
 * name - The name of the application, will be used in its path.
 * db - [Bool] Indicate whether this app requires database
 * static - Path of static files for this application
-* main - [Optional] Main script for this application, defaults to app.js
 * permissions - [Array] Describes how the application can access users' information
+
+#### Index.js
+`index.js` is the entry point of the application. A typical index.js should look like:
+```
+var shard = require('./shard.json');
+shard.routes = [
+  {
+    path: '/',
+    method: 'GET',
+    respond: function (req, res, session, db) {
+	  // Handle the request
+    }
+  }
+]
+module.exports = shard;
+```
 
 #### Base system APIs
 The base system provides database, route, and session APIs for each application. Each application main script should begin with: 
