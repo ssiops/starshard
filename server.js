@@ -14,6 +14,7 @@ var server = module.exports = express();
 
 server.configure(function () {
   server.set('env', pkg.production == true ? 'production': 'development');
+  server.use(express.logger('dev'));
   server.use(express.compress());
   server.use(express.bodyParser());
   server.use(express.cookieParser());
@@ -30,7 +31,7 @@ server.configure('production', function(){
   server.use(express.errorHandler());
 });
 
-
+init(server);
 
 server.listen(80, function(){
   console.log("SFEI Systems operating on port %d in %s mode. [%s]", 80, server.settings.env, new Date());
