@@ -1,0 +1,6 @@
+{
+  "port": 80,
+  "sport": 443,
+  "root": "superops",
+  "passwd": "starshard@ssiops.org"
+}

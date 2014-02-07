@@ -26,7 +26,7 @@ The base system uses Redis to store user session data. Class Sessions will handl
 #### Shard.json
 Shard.json will provide basic information for the base system. Shard properties will include:
 * name - The name of the application, will be used in its path.
-* db - [Bool] Indicate whether this app requires database
+* usedb - [Bool] Indicate whether this app requires database
 * static - Path of static files for this application
 * permissions - [Array] Describes how the application can access users' information
 
