@@ -2,6 +2,9 @@
 
 var pkg = require('./package.json');
 
+var assert = require('assert');
+var async = require('async');
+
 var express = require('express');
 var redis = require('redis');
 var redisClient = redis.createClient();
@@ -31,8 +34,9 @@ server.configure('production', function(){
   server.use(express.errorHandler());
 });
 
-init(server);
-
-server.listen(80, function(){
-  console.log("SFEI Systems operating on port %d in %s mode. [%s]", 80, server.settings.env, new Date());
+init(server, function (err) {
+  assert.equal(null, err);
+  server.listen(80, function(){
+    console.log("SFEI Systems operating on port %d in %s mode. [%s]", 80, server.settings.env, new Date());
+  });
 });
