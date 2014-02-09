@@ -1,12 +1,21 @@
 {
-  "name": "Starshard",
-  "version": "4.0.0",
-  "description": "SFEI Systems v4 - SSI Network Infrastructure",
+  "name": "starshard",
+  "version": "0.1.0",
+  "description": "Starshard - Sleek and powerful framework that runs multiple web applications on a single node.js server.",
+  "author": "akasfei",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akasfei/starshard"
+    "url": "https://github.com/ssiops/starshard"
   },
-  "author": "SFEI Systems Inc.",
+  "bugs": {
+    "url": "https://github.com/ssiops/starshard/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ssiops/starshard/raw/master/LICENSE"
+    }
+  ],
   "dependencies": {
     "async": "~0.2.0",
     "express": "~3.4.0",
