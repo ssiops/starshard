@@ -22,7 +22,7 @@ server.configure(function () {
   server.use(express.bodyParser());
   server.use(express.cookieParser());
   server.use(express.session({store: new RedisStore({client: redisClient}), secret: 'SSIv4'}));
-  server.use(express.static(__dirname + '/static'));
+  server.use(express.static(__dirname + '/_static'));
   server.use(express.methodOverride());
 });
 
