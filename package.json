@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Starshard - Sleek and powerful framework that runs multiple web applications on a single node.js server.",
   "author": "akasfei",
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ssiops/starshard"
