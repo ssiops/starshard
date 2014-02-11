@@ -1,5 +1,7 @@
 'use strict';
 
+var t = new Date();
+
 var pkg = require('./package.json');
 
 var assert = require('assert');
@@ -13,7 +15,7 @@ var init = require('./lib/init.js');
 
 var view = require('./lib/view.js');
 
-console.log('[%s]\nSystem started. Initializing system parameters.', new Date());
+console.log('[%s]\nSystem started. Initializing system parameters.', t);
 
 var server = module.exports = express();
 
@@ -43,6 +45,6 @@ server.configure('production', function(){
 init(server, function (err) {
   assert.equal(null, err);
   server.listen(80, function(){
-    console.log("SFEI Systems operating on port %d in %s mode. [%s]", 80, server.settings.env, new Date());
+    console.log("SFEI Systems booted in %d ms. [@port %d in %s mode]", new Date().getTime() - t.getTime(), 80, server.settings.env);
   });
 });
