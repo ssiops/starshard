@@ -13,11 +13,13 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #428bca;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+@brand-primary:         #33b5e5;
+@brand-success:         #99cc00;
+@brand-info:            #aa66cc;
+@brand-warning:         #ffbb33;
+@brand-danger:          #ff4444;
+
+@darkbg:				#293033;
 
 
 //== Scaffolding
@@ -25,12 +27,12 @@
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               @darkbg;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            #eee;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            lighten(@brand-primary, 50%);
 //** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
 
@@ -95,9 +97,9 @@
 @line-height-large:         1.33;
 @line-height-small:         1.5;
 
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-base:        0;
+@border-radius-large:       0;
+@border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -137,9 +139,9 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-color:              #fff;
+@btn-default-bg:                 lighten(@darkbg, 15%);
+@btn-default-border:             lighten(@darkbg, 5%);
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
@@ -340,8 +342,8 @@
 // Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @gray-light;
-@navbar-inverse-bg:                         #222;
-@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-bg:                         darken(@darkbg, 10%);
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 5%);
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
@@ -437,7 +439,7 @@
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
-@jumbotron-bg:                   @gray-lighter;
+@jumbotron-bg:                   darken(@darkbg, 5%);
 @jumbotron-heading-color:        inherit;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 
@@ -697,7 +699,7 @@
 //
 //##
 
-@well-bg:                     #f5f5f5;
+@well-bg:                     darken(@darkbg, 3%);
 @well-border:                 darken(@well-bg, 7%);
 
 
