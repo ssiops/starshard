@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="cbg form-horizontal starshard-login-form">
+        <h1>Login</h1>
+        <div class="form-group">
+          <label for="username" class="control-label col-md-3">User name</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" id="username" name="username" placeholder="User name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label col-md-3">Password</label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-9 col-md-offset-3">
+            <a href="#" class="btn btn-primary starshard-login">Login</a>
+            <a href="/register" class="btn btn-default">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/application/starshard-login{{#if production}}.min{{/if}}.js"></script>
