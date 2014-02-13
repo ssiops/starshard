@@ -26,15 +26,18 @@
     <!-- Place anything custom after this. -->
   </head>
   <body>
+    <script src="/js/jquery/jquery-2.1.0{{#if production}}.min{{/if}}.js"></script>
+    <script src="/js/bootstrap/bootstrap{{#if production}}.min{{/if}}.js"></script>
+    <script src="/js/application/application{{#if production}}.min{{/if}}.js"></script>
+
+    <div class="float-msg"></div>
+
     {{> nav }}
 
     {{{ body }}}
 
     {{> footer }}
 
-    <script src="/js/jquery/jquery-2.1.0{{#if production}}.min{{/if}}.js"></script>
-    <script src="/js/bootstrap/bootstrap{{#if production}}.min{{/if}}.js"></script>
-    <script src="/js/application.js"></script>
   </body>
 </html>
 
