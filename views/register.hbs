@@ -1,0 +1,40 @@
+<div class="jumbotron starshard-header">
+  <div class="container align-center">
+    <h1>Register</h1>
+    <p>Create your starshard account to access more features.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <form action="/register" method="PUT" id="user_register" class="col-md-6 col-md-offset-3">
+      <div class="cbg form-horizontal">
+        <h2>Basics</h2>
+        {{#parse '{"id": "username", "label": "Username", "horizontal": true, "wide_label": true}'}}
+          {{> form_group }}
+        {{/parse}}
+
+        {{#parse '{"id": "email", "label": "Email address", "horizontal": true, "wide_label": true}'}}
+          {{> form_group }}
+        {{/parse}}
+
+        {{#parse '{"id": "password", "type": "password", "label": "Password", "horizontal": true, "wide_label": true}'}}
+          {{> form_group }}
+        {{/parse}}
+
+        {{#parse '{"id": "password_r", "type": "password", "label": "Retype password", "horizontal": true, "wide_label": true}'}}
+          {{> form_group }}
+        {{/parse}}
+
+        <div class="form-group">
+          <div class="col-md-9 col-md-offset-3">
+            <button type="submit" href="#" class="btn btn-primary">Register</button>
+            <button type="reset" href="#" class="btn btn-danger">Clear</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/application/starshard-register{{#if production}}.min{{/if}}.js"></script>
