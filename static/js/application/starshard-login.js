@@ -1,7 +1,8 @@
 !function ($) {
 
   $(function(){
-    $('.starshard-login').on('click', function (e) {
+    $('#user_login').on('submit', function (e) {
+      e.preventDefault();
       var form = {
         username: $('#username').val(),
         password: $('#password').val()
@@ -10,6 +11,7 @@
         $('#username').parents('.form-group').addClass('has-error');
         return;
       }
+      $('.form-group').removeClass('has-error');
       if (form.password.length < 6 || form.password.length > 20) {
         $('#password').parents('.form-group').addClass('has-error');
         return;
