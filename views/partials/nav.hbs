@@ -25,7 +25,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li> <a href="https://github.com/ssiops/starshard">View on Github</a> </li>
         <li{{#if user}} class="dropdown"{{/if}}> 
-          <a href="#"{{#if user}} class="dropdown-toggle" data-toggle="dropdown"{{/if}}>#!SSIOPS&gt;&gt;{{#unless user}}STD{{/unless}}{{#if user}}{{user.name}}{{/if}}</a>
+          <a{{#if user}} href="#" class="dropdown-toggle" data-toggle="dropdown"{{/if}}{{#unless user}} href="/login"{{/unless}}>#!SSIOPS&gt;&gt;{{#unless user}}STD{{/unless}}{{#if user}}{{user.name}}{{/if}}</a>
           {{#if user}}{{> nav_user_dropdown user}}{{/if}}
         </li>
       </ul>
