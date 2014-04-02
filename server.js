@@ -22,7 +22,6 @@ var server = module.exports = express();
 
 server.configure(function () {
   server.set('env', pkg.production == true ? 'production': 'development');
-  server.use(express.logger('dev'));
   server.use(express.compress());
   server.use(express.bodyParser());
   server.use(express.cookieParser());
@@ -39,6 +38,7 @@ server.configure(function () {
 });
 
 server.configure('development', function(){
+  server.use(express.logger('dev'));
   server.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
