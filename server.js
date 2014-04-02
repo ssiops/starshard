@@ -14,6 +14,7 @@ var RedisStore = require('connect-redis')(express);
 var init = require('./lib/init.js');
 
 var view = require('./lib/view.js');
+var error = require('./lib/error.js');
 
 console.log('[%s]\nSystem started. Initializing system parameters.', t);
 
@@ -28,6 +29,9 @@ server.configure(function () {
   server.use(express.session({store: new RedisStore({client: redisClient}), secret: 'SSIv4'}));
   server.use(express.static(__dirname + '/_static'));
   server.use(express.methodOverride());
+  server.use(server.router);
+  server.use(error.s404);
+  server.use(error.s500);
 
   server.engine('html', view.__express);
   server.set('view engine', 'html');
