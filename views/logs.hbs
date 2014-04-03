@@ -1,0 +1,12 @@
+<ul class="starshard-log">
+  {{#each logs}}
+  <li>
+    <p><strong>{{ip}} - {{url}}{{#if tag}} - {{tag}}{{/if}}</strong></p>
+    <pre>
+{{date}}
+{{ua}}
+{{#if msg}} - {{msg}}{{/if}}
+    </pre>
+  </li>
+  {{/each}}
+</ul>
