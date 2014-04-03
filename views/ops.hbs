@@ -1,3 +1,5 @@
+<script src="/js/application/starshard-ops{{#if production}}.min{{/if}}.js"></script>
+
 <div class="container">
   <h1>SYSTEM OPERATIONS</h1>
   <div class="row">
@@ -10,15 +12,19 @@
         {{/each}}
         </ul>
       </div>
+      <div class="cbg">
+        <h3>AVAILABLE USERS <a href="#" class="btn btn-success refresh-users pull-right"><i class="glyphicon glyphicon-refresh"></i></a></h3>
+        <div class="users-list">
+
+        </div>
+      </div>
     </div>
     <div class="col-md-8">
       <div class="cbg">
-        <h3>AVAILABLE USERS</h3>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <div class="cbg">
-        <h3>LOGS</h3>
+        <h3>LOGS <a href="#" class="btn btn-success refresh-logs pull-right"><i class="glyphicon glyphicon-refresh"></i></a></h3>
+        <div class="logs-list">
+
+        </div>
       </div>
     </div>
   </div>
