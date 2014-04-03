@@ -1,0 +1,5 @@
+<ul class="starshard-users">
+  {{#each users}}
+  <li><a href="/profile/{{name}}">{{name}}</a>{{#if admin}}<i class="glyphicon glyphicon-star"></i>{{/if}}<br><i>{{email}}</i></li>
+  {{/each}}
+</ul>
