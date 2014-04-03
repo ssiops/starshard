@@ -22,6 +22,8 @@ var server = module.exports = express();
 
 server.configure(function () {
   server.set('env', pkg.production == true ? 'production': 'development');
+  if (pkg.production !== true)
+    server.use(express.logger('dev'));
   server.use(express.compress());
   server.use(express.bodyParser());
   server.use(express.cookieParser());
@@ -35,15 +37,8 @@ server.configure(function () {
   server.engine('html', view.__express);
   server.set('view engine', 'html');
   server.set('views', __dirname + '/views');
-});
 
-server.configure('development', function(){
-  server.use(express.logger('dev'));
   server.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-server.configure('production', function(){
-  server.use(express.errorHandler());
 });
 
 init(server, function (err) {
