@@ -6,11 +6,14 @@
     <div class="col-md-4">
       <div class="cbg">
         <h3>ACTIVE SHARDS</h3>
-        <ul>
+        <div class="starshard-shards list-group">
         {{#each shards}}
-          <li>{{name}} <br><i>{{desc}}</i></li>
+          <a href="/{{href}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{name}}</h4>
+            <p class="list-group-item-text">{{desc}}</p>
+          </a>
         {{/each}}
-        </ul>
+        </div>
       </div>
       <div class="cbg">
         <h3>AVAILABLE USERS <a href="#" class="btn btn-success refresh-users pull-right"><i class="glyphicon glyphicon-refresh"></i></a></h3>
@@ -21,7 +24,17 @@
     </div>
     <div class="col-md-8">
       <div class="cbg">
-        <h3>LOGS <a href="#" class="btn btn-success refresh-logs pull-right"><i class="glyphicon glyphicon-refresh"></i></a></h3>
+        <h3>LOGS</h3>
+        <div class="logs-filter row">
+          <div class="col-md-6 col-md-offset-6">
+            <div class="input-group">
+              <input type="text" class="form-control query-logs" placeholder="Filter logs">
+              <span class="input-group-btn">
+                <button class="btn btn-primary refresh-logs" type="button"><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
         <div class="logs-list">
 
         </div>

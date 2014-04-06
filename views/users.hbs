@@ -1,5 +1,13 @@
-<ul class="starshard-users">
+<ul class="nav nav-pills nav-stacked starshard-users">
   {{#each users}}
-  <li><a href="/profile/{{name}}">{{name}}</a>{{#if admin}}<i class="glyphicon glyphicon-star"></i>{{/if}}<br><i>{{email}}</i></li>
+  <li class="dropdown" data-name="{{name}}">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="/profile/{{name}}">{{name}}{{#if admin}}<i class="glyphicon glyphicon-star"></i>{{/if}}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      {{#if email}}<li><a href="#">{{email}}</a></li><li class="divider"></li>{{/if}}
+      {{#unless admin}}<li><a href="#" class="set-admin">SET ADMIN</a></li>{{/unless}}
+      {{#if admin}}<li><a href="#" class="unset-admin">UNSET ADMIN</a></li>{{/if}}
+      <li><a href="#" class="remove-user">REMOVE USER</a></li>
+    </ul>
+  </li>
   {{/each}}
 </ul>
