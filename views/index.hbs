@@ -3,9 +3,12 @@
     <img src="./img/starshard.svg" alt="Starshard logo" class="starshard-logo">
     <h1>SFEI Systems v4</h1>
     <p>Codename Starshard</p>
-    <p><a href="/isn" class="btn btn-primary">About SFEI</a> 
-    {{#unless user}}<a href="/login" class="btn btn-default">Login</a></p>{{/unless}}
-    {{#if user}}<a href="/profile/{{user.name}}" class="btn btn-success">Your profile</a></p>{{/if}}
+    <p>
+      <a href="/isn" class="btn btn-primary">About SFEI</a> 
+      {{#unless user}}<a href="/login" class="btn btn-default">Login</a>{{/unless}}
+      {{#if user}}<a href="/profile/{{user.name}}" class="btn btn-success">Your profile</a>{{/if}}
+      {{#if user.admin}}<a href="/ops" class="btn btn-default">OPS</a>{{/if}}
+    </p>
   </div>
 </div>
 
