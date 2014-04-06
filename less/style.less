@@ -41,6 +41,7 @@ footer.signature {
 }
 
 .starshard-logo {
+  min-width: 162px;
   min-height: 300px;
 }
 
@@ -54,11 +55,19 @@ footer.signature {
   background-color: fade(lighten(@darkbg, 7%), 80%);
 }
 
+.starshard-shards,
+.starshard-users,
+.starshard-logs {
+  padding-left: 0;
+}
+/*
+.starshard-shards > li,
 .starshard-users > li,
 .starshard-logs > li {
   list-style: none;
+  padding: 4px;
   margin-bottom: 4px;
-}
+}*/
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
        only screen and (min--moz-device-pixel-ratio: 2),
