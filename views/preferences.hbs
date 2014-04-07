@@ -1,0 +1,42 @@
+<script src="/js/application/starshard-preferences{{#if production}}.min{{/if}}.js"></script>
+<div class="container spaced-top">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="cbg">
+        <ul class="list-group">
+          <a href="/profile/{{user.name}}" class="list-group-item active">{{user.name}}</a>
+          <a href="#password" class="list-group-item">Change password</a>
+          <a href="#remove-account" class="list-group-item">Delete account</a>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div id="password" class="cbg form-horizontal">
+        <h3>Change password</h3>
+        {{#parse '{"id": "password_old", "label": "Old Password", "type": "password", "horizontal": true}'}}
+          {{> form_group }}
+        {{/parse}}
+        {{#parse '{"id": "password_new", "label": "New Password", "type": "password", "horizontal": true}'}}
+          {{> form_group }}
+        {{/parse}}
+        {{#parse '{"id": "password_new_confirm", "label": "Confirm New Password", "type": "password", "horizontal": true}'}}
+          {{> form_group }}
+        {{/parse}}
+        <div class="form-group">
+          <div class="col-md-9 col-md-offset-3">
+            <button type="button" href="#" class="btn btn-primary password-update">Update Password</button>
+          </div>
+        </div>
+      </div>
+      <div id="remove-account" class="cbg form-horizontal">
+        <h3>Delete account</h3>
+        <div class="alert alert-danger">
+          <p>Danger! This will delete your account and all its data. This action cannot be undone.</p>
+        </div>
+        <p>Please type your email address to confirm.</p>
+        <p><input type="email" id="confirm_removal" name="confirm_removal" class="form-control" placeholder="Enter your email address to confirm."></p>
+        <button type="button" href="#" class="btn btn-danger account-delete disabled">DELETE ACCOUNT</button>
+      </div>
+    </div>
+  </div>
+</div>
