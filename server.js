@@ -7,6 +7,7 @@ var pkg = require('./package.json');
 var assert = require('assert');
 var async = require('async');
 
+var cluster = require('cluster');
 var express = require('express');
 var redis = require('redis');
 var redisClient = redis.createClient();
@@ -16,7 +17,16 @@ var init = require('./lib/init.js');
 var view = require('./lib/view.js');
 var error = require('./lib/error.js');
 
-console.log('[%s]\nSystem started. Initializing system parameters.', t);
+if (cluster.isMaster) {
+  // Fork workers.
+  console.log('[%s]\nSystem started. Initializing system clusters.', t);
+  for (var i = 0; i < require('os').cpus().length; i++) {
+    cluster.fork();
+  }
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+  });
+} else {
 
 var server = module.exports = express();
 
@@ -25,7 +35,8 @@ server.configure(function () {
   if (pkg.production !== true)
     server.use(express.logger('dev'));
   server.use(express.compress());
-  server.use(express.bodyParser());
+  server.use(express.json());
+  server.use(express.urlencoded());
   server.use(express.cookieParser());
   server.use(express.session({store: new RedisStore({client: redisClient}), secret: 'SSIv4'}));
   server.use(express.static(__dirname + '/_static'));
@@ -44,6 +55,7 @@ server.configure(function () {
 init(server, function (err) {
   assert.equal(null, err);
   server.listen(80, function(){
-    console.log("SFEI Systems booted in %d ms. [@port %d in %s mode]", new Date().getTime() - t.getTime(), 80, server.settings.env);
+    console.log("Cluster #%d booted in %d ms. [@port %d in %s mode]", cluster.worker.id, new Date().getTime() - t.getTime(), 80, server.settings.env);
   });
 });
+}
