@@ -1,0 +1,9 @@
+<div class="jumbotron">
+  <div class="container align-center">
+    <h3>Welcome back, {{#if user}}{{user.name}}{{else}}traveller{{/if}}.</h3>
+    <p>{{email}}</p>
+    {{#if self}}
+    <p><a href="/preferences#password" class="btn btn-default">Change Password</a></p>
+    {{/if}}
+  </div>
+</div>
