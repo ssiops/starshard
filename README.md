@@ -6,6 +6,17 @@ The base system will provide session and db storage for upper applications.
 Each application can define routes of their own and access one exclusive database.
 Accounts can be shared throughout all applications.
 
+### Getting Started
+First make sure you have grunt, if you don't know what it is, see [http://gruntjs.com/](http://gruntjs.com/).
+
+Compile LESS styles, uglify and minify js files using `grunt`
+
+Make sure mongodb and redis are running.
+
+Init database and stard static files using `node init.js`
+
+Now you can start the server `node server.js`.
+
 ### Base system
 
 #### Routes
