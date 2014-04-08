@@ -65,6 +65,29 @@ footer.signature {
   padding-left: 0;
 }
 
+.profile-img {
+  max-width: 250px;
+  max-height: 250px;
+  &.full {
+    max-width: 490px;
+    max-height: 490px;
+  }
+  &.medium {
+    max-width: 130px;
+    max-height: 130px;
+  }
+  &.small {
+    padding: 2px;
+    max-width: 66px;
+    max-height: 66px;
+  }
+  &.smallest {
+    padding: 1px;
+    max-width: 34px;
+    max-height: 34px;
+  }
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
        only screen and (min--moz-device-pixel-ratio: 2),
        only screen and (-o-min-device-pixel-ratio: 2/1),
