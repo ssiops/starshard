@@ -47,6 +47,7 @@ async.parallel([
     async.map(list, function (name, callback) {
       var shard = require(name);
       if (typeof shard.static !== 'undefined') {
+        wrench.mkdirSyncRecursive('./usercontent/usercontent/' + shard.name);
         wrench.copyDirRecursive('./node_modules/' + name + '/' + shard.static, './_static/' + shard.name, {forceDelete: true}, function (err) {
           assert.equal(null, err);
           return callback(null);
