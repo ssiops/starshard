@@ -1,6 +1,7 @@
 <div class="jumbotron">
   <div class="container align-center">
-    <h3>Welcome back, {{#if profile}}{{profile.name}}{{else}}traveller{{/if}}.</h3>
+    <img src="{{#if profile.img}}/usercontent/profile/{{profile.img}}{{else}}/img/default-profile.png{{/if}}" alt="Profile image" class="img-thumbnail profile-img">
+    <h3>{{#if profile}}{{profile.name}}{{else}}traveller{{/if}}.</h3>
     <p>{{email}}</p>
     {{#if self}}
     <p><a href="/preferences#password" class="btn btn-default">Change Password</a></p>
