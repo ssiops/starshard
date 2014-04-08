@@ -5,12 +5,29 @@
       <div class="cbg">
         <ul class="list-group">
           <a href="/profile/{{user.name}}" class="list-group-item active">{{user.name}}</a>
+          <a href="#profile-img" class="list-group-item">Update profile image</a>
           <a href="#password" class="list-group-item">Change password</a>
           <a href="#remove-account" class="list-group-item">Delete account</a>
         </ul>
       </div>
     </div>
     <div class="col-md-9">
+      <form id="profile-img" action="/usercontent/profile" method="post" enctype="multipart/form-data" class="cbg">
+        <h3>Update profile image</h3>
+        {{#if upload_success}}
+        <div class="alert alert-success">
+          <p>Your profile image has been updated.</p>
+        </div>
+        {{/if}}
+        {{#if upload_fail}}
+        <div class="alert alert-danger">
+          <p>Your profile image failed to upload. Please try again later.</p>
+        </div>
+        {{/if}}
+        <input type="file" name="img" accept="image/*">
+        <p>Your profile should be at least 480px * 480px large.</p>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
       <div id="password" class="cbg form-horizontal">
         <h3>Change password</h3>
         {{#parse '{"id": "password_old", "label": "Old Password", "type": "password", "horizontal": true}'}}

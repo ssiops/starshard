@@ -37,9 +37,11 @@ server.configure(function () {
   server.use(express.compress());
   server.use(express.json());
   server.use(express.urlencoded());
+  server.use(require('connect-multiparty')({limit: '8mb'}));
   server.use(express.cookieParser());
   server.use(express.session({store: new RedisStore({client: redisClient}), secret: 'SSIv4'}));
   server.use(express.static(__dirname + '/_static'));
+  server.use(express.static(__dirname + '/usercontent'));
   server.use(express.methodOverride());
   server.use(server.router);
   server.use(error.s404);

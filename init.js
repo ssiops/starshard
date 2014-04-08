@@ -24,6 +24,10 @@ if (fs.existsSync('./shards.json')) {
 
 async.parallel([
   function (callback) {
+    wrench.mkdirSyncRecursive('./usercontent/usercontent/profile');
+    return callback()
+  },
+  function (callback) {
     db.init(function (err) {
       return callback (err);
     });
