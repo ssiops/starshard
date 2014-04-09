@@ -88,6 +88,18 @@ footer.signature {
   }
 }
 
+.loading {
+  display: block;
+  min-height: 140px;
+  background-image: url('../img/loading-animation-large.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  &.small {
+    min-height: 70px;
+    background-image: url('../img/loading-animation-small.gif');
+  }
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
        only screen and (min--moz-device-pixel-ratio: 2),
        only screen and (-o-min-device-pixel-ratio: 2/1),
