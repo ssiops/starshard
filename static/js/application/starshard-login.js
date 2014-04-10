@@ -23,8 +23,9 @@
         data: form,
         dataType: 'json',
         statusCode: {
-          200: function (err) {
-            alert(err.err);
+          200: function (data) {
+            if (data.err) console.log(data.err);
+            if (data.redirect) window.location.href = '/' + data.redirect + '/';
           },
           204: function () {
             window.location.href = '/';
