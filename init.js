@@ -5,6 +5,8 @@ var async = require('async');
 var fs = require('fs');
 var wrench = require('wrench');
 
+var conf = require('./config.json');
+
 var Db = require('./lib/db.js');
 var User = require('./lib/user.js');
 
