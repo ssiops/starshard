@@ -141,7 +141,7 @@
 
 @btn-default-color:              #fff;
 @btn-default-bg:                 lighten(@darkbg, 15%);
-@btn-default-border:             lighten(@darkbg, 5%);
+@btn-default-border:             darken(@darkbg, 2%);
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
@@ -208,13 +208,13 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    darken(@darkbg, 7%);
+@dropdown-bg:                    darken(@darkbg, 5%);
 //** Dropdown menu `border-color`.
-@dropdown-border:                lighten(@darkbg, 3%);
+@dropdown-border:                lighten(@darkbg, 10%);
 //** Dropdown menu `border-color` **for IE8**.
-@dropdown-fallback-border:       lighten(@darkbg, 3%);
+@dropdown-fallback-border:       lighten(@darkbg, 10%);
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            lighten(@darkbg, 5%);
+@dropdown-divider-bg:            lighten(@darkbg, 7%);
 
 //** Dropdown link text color.
 @dropdown-link-color:            @gray-light;
@@ -517,7 +517,7 @@
 //##
 
 //** Default label background color
-@label-default-bg:            @gray-light;
+@label-default-bg:            lighten(@darkbg, 15%);
 //** Primary label background color
 @label-primary-bg:            @brand-primary;
 //** Success label background color
