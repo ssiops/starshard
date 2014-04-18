@@ -548,9 +548,9 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             darken(@darkbg, 5%);
 //** Modal content border color
-@modal-content-border-color:                   rgba(0,0,0,.2);
+@modal-content-border-color:                   lighten(@darkbg, 10%);
 //** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
@@ -559,7 +559,7 @@
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .5;
 //** Modal header border color
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   lighten(@darkbg, 5%);
 //** Modal footer border color
 @modal-footer-border-color:   @modal-header-border-color;
 
@@ -598,7 +598,7 @@
 //##
 
 //** Background color of the whole progress component
-@progress-bg:                 #f5f5f5;
+@progress-bg:                 darken(@darkbg, 10%);
 //** Progress bar text color
 @progress-bar-color:          #fff;
 
