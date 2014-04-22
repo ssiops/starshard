@@ -1,9 +1,12 @@
 !function ($) {
   var update_logs = function () {
     var q = $('.query-logs').val();
+    var l = $('.query-logs-limit').val();
     var query = {}
     if (q.length > 0)
       query.q = q;
+    if (l.length > 0)
+      query.l = l;
     $.ajax({
       url: '/ops/logs',
       method: 'GET',
