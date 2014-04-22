@@ -41,9 +41,14 @@ if (cluster.isMaster) {
 } else {
   var server = module.exports = express();
 
-  server.set('env', pkg.production == true ? 'production': 'development');
-  if (pkg.production !== true)
+  server.locals.version = pkg.version;
+  if (pkg.production === true) {
+    server.set('env', 'production');
+    server.locals.production = process.production = true;
+  } else {
+    server.set('env', 'development');
     server.use(logger('dev'));
+  }
   server.use(compress());
   server.use(bodyParser());
   server.use(multiparty({limit: '8mb'}));

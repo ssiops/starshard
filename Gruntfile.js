@@ -56,7 +56,7 @@ module.exports = function(grunt) {
       },
       bs_min: {
         options: {
-          yuicompress: true
+          compress: true
         },
         files: {
           '<%= target %>/css/bootstrap.min.css' : './less/bootstrap/bootstrap.less',
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       },
       style_min: {
         options: {
-          yuicompress: true
+          compress: true
         },
         files: {
           '<%= target %>/css/style.min.css' : 'less/style.less'

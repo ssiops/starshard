@@ -1,6 +1,6 @@
 {
   "name": "starshard",
-  "version": "4.0.4",
+  "version": "4.0.6",
   "description": "Starshard - Sleek and powerful framework that runs multiple web applications on a single node.js server.",
   "author": "akasfei",
   "scripts": {
