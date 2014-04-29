@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <title>Starshard{{#if title}} - {{/if}}{{title}}</title>
@@ -26,11 +26,15 @@
     <!-- Place anything custom after this. -->
   </head>
   <body>
-    <script src="/js/jquery/jquery-2.1.0{{#if production}}.min{{/if}}.js"></script>
-    <script src="/js/bootstrap/bootstrap{{#if production}}.min{{/if}}.js"></script>
+    <script src="/js/angular/angular{{#if production}}.min{{/if}}.js"></script>
+    <script src="/js/angular/ui-bootstrap{{#if production}}.min{{/if}}.js"></script>
     <script src="/js/application/application{{#if production}}.min{{/if}}.js"></script>
 
-    <div class="float-msg"></div>
+    <div class="float-msg active" ng-controller="floatMsgCtrl" ng-show="show">
+      <div class="alert alert-\{{style}}">
+        <p>\{{msg}} <a href="#" class="float-msg-dismiss" ng-click="show=false;">Dismiss</a></p>
+      </div>
+    </div>
 
     {{> nav }}
 

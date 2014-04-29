@@ -7,25 +7,33 @@
 
 <div class="container">
   <div class="row">
-    <form action="/register" method="PUT" id="user_register" class="col-md-6 col-md-offset-3">
+    <form id="user_register" class="col-md-8 col-md-offset-2" ng-controller="registerCtrl" ng-submit="submit()">
       <div class="cbg form-horizontal">
         <h2>Basics</h2>
-        {{#parse '{"id": "username", "label": "Username", "horizontal": true, "wide_label": true}'}}
-          {{> form_group }}
-        {{/parse}}
-
-        {{#parse '{"id": "email", "label": "Email address", "horizontal": true, "wide_label": true}'}}
-          {{> form_group }}
-        {{/parse}}
-
-        {{#parse '{"id": "password", "type": "password", "label": "Password", "horizontal": true, "wide_label": true}'}}
-          {{> form_group }}
-        {{/parse}}
-
-        {{#parse '{"id": "password_r", "type": "password", "label": "Retype password", "horizontal": true, "wide_label": true}'}}
-          {{> form_group }}
-        {{/parse}}
-
+        <div class="form-group">
+          <label for="username" class="control-label col-md-4">Username</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" id="username" name="username" placeholder="Username" ng-model="form.username" ng-pattern="/^[a-zA-Z0-9\-\_\.]{2,16}$/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label col-md-4">Email address</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" id="email" name="email" placeholder="Email address" ng-model="form.email" ng-pattern="/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label col-md-4">Password</label>
+          <div class="col-md-7">
+            <input class="form-control" type="password" id="password" name="password" placeholder="Password" ng-model="form.password" ng-pattern="/^.{6,20}$/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_r" class="control-label col-md-4">Retype password</label>
+          <div class="col-md-7">
+            <input class="form-control" type="password" id="password_r" name="password_r" placeholder="Retype password" ng-model="password_r" ng-pattern="/^.{6,20}$/">
+          </div>
+        </div>
         <div class="form-group">
           <div class="col-md-9 col-md-offset-3">
             <button type="submit" href="#" class="btn btn-primary">Register</button>

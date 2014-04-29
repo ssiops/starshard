@@ -35,6 +35,9 @@ module.exports = function(grunt) {
 
     uglify: {
       application: {
+        options: {
+          mangle: false
+        },
         files: [{
           src: './static/js/application/*.js',
           dest: '<%= target %>/js/application',

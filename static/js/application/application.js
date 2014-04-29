@@ -1,30 +1,41 @@
-!function ($) {
-
-  $.alert = function(opt) {
-    var self = $('.float-msg');
-    var alert_class = 'alert alert-danger';
-    var msg = 'An error has occurred.';
-    if (typeof opt === 'string'){
-      if (opt === 'show')
-        return self.addClass('active');
-      if (opt === 'hide')
-        return self.removeClass('active');
+var alertService = function ($rootScope) {
+  return {
+    show: function () {
+      return $rootScope.$broadcast('alertEvent', {show: true});
+    },
+    hide: function () {
+      return $rootScope.$broadcast('alertEvent', {show: false});
+    },
+    send: function (opt) {
+      if (typeof opt === 'string')
+        return $rootScope.$broadcast('alertEvent', {show: true, msg: opt});
+      else {
+        var e = {show: true, style: 'warning'};
+        if (typeof opt.style !== undefined)
+          e.style = opt.style;
+        if (typeof opt.msg === 'undefined')
+          return;
+        e.msg = opt.msg;
+        return $rootScope.$broadcast('alertEvent', e);
+      }
     }
-    else if (typeof opt.msg === 'undefined')
-      return self;
-    if (typeof opt.style === 'undefined')
-      alert_style = 'alert alert-danger';
-    else
-      alert_style = 'alert alert-' + opt.style;
-    msg = opt.msg;
-    self.html('<div class="' + alert_style + '"><p>' + msg + ' <a href="#" class="float-msg-dismiss">Dismiss</a></p></div>');
-    $.alert('show');
-    return self;
   }
+}
 
-  $(function(){
-    $('.float-msg').on('click', '.float-msg-dismiss', function (e) {
-      $.alert('hide');
-    });
+angular.module('app', ['ui.bootstrap']).
+  factory('$alertService', ['$rootScope', function ($rootScope) {
+    return alertService($rootScope);
+  }]);
+
+function floatMsgCtrl ($scope) {
+  $scope.show = false;
+  $scope.style = 'warning';
+  $scope.$on('alertEvent', function (e, opt) {
+    for (var prop in opt)
+      $scope[prop] = opt[prop];
   });
-}(window.jQuery)
+}
+
+function NavCollapseCtrl($scope) {
+  $scope.isCollapsed = true;
+}

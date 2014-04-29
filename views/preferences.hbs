@@ -1,3 +1,4 @@
+<script src="/js/angular/angular-file-upload{{#if production}}.min{{/if}}.js"></script>
 <script src="/js/application/starshard-preferences{{#if production}}.min{{/if}}.js"></script>
 <div class="container spaced-top">
   <div class="row">
@@ -11,37 +12,41 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-9">
-      <form id="profile-img" action="/usercontent/profile" method="post" enctype="multipart/form-data" class="cbg">
+    <div class="col-md-9" ng-controller="preferenceCtrl">
+      <form id="profile-img" enctype="multipart/form-data" class="cbg">
         <h3>Update profile image</h3>
-        {{#if upload_success}}
-        <div class="alert alert-success">
-          <p>Your profile image has been updated.</p>
+        <div class="well img-drop-zone" ng-file-drop ng-file-over>
+          Drop image here, or <button class="btn btn-primary" ng-click="showFileInput=1">Choose an image</button>
+          <input ng-file-select type="file" name="imageInput" id="imageInput" accept="image/*" ng-show="showFileInput">
         </div>
-        {{/if}}
-        {{#if upload_fail}}
-        <div class="alert alert-danger">
-          <p>Your profile image failed to upload. Please try again later.</p>
+        <div class="progress progress-striped" style="">
+          <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
         </div>
-        {{/if}}
-        <input type="file" name="img" accept="image/*">
-        <p>Your profile should be at least 480px * 480px large.</p>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <p class="text-subtle">Your profile should be at least 480px * 480px large.</p>
       </form>
       <div id="password" class="cbg form-horizontal">
         <h3>Change password</h3>
-        {{#parse '{"id": "password_old", "label": "Old Password", "type": "password", "horizontal": true}'}}
-          {{> form_group }}
-        {{/parse}}
-        {{#parse '{"id": "password_new", "label": "New Password", "type": "password", "horizontal": true}'}}
-          {{> form_group }}
-        {{/parse}}
-        {{#parse '{"id": "password_new_confirm", "label": "Confirm New Password", "type": "password", "horizontal": true}'}}
-          {{> form_group }}
-        {{/parse}}
+        <div class="form-group">
+          <label for="password_old" class="control-label col-md-3">Old Password</label>
+          <div class=" col-md-8">
+            <input class="form-control" type="password" id="password_old" name="password_old" placeholder="Old Password" ng-model="password.password_o" ng-pattern="/^.{6,20}$/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_new" class="control-label col-md-3">New Password</label>
+          <div class=" col-md-8">
+            <input class="form-control" type="password" id="password_new" name="password_new" placeholder="New Password" ng-model="password.password" ng-pattern="/^.{6,20}$/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_new_confirm" class="control-label col-md-3">Confirm New Password</label>
+          <div class=" col-md-8">
+            <input class="form-control" type="password" id="password_new_confirm" name="password_new_confirm" placeholder="Confirm New Password" ng-model="password_r" ng-pattern="/^.{6,20}$/">
+          </div>
+        </div>
         <div class="form-group">
           <div class="col-md-9 col-md-offset-3">
-            <button type="button" href="#" class="btn btn-primary password-update">Update Password</button>
+            <button type="button" href="#" class="btn btn-primary" ng-click="changePassword()">Update Password</button>
           </div>
         </div>
       </div>
@@ -51,8 +56,8 @@
           <p>Danger! This will delete your account and all its data. This action cannot be undone.</p>
         </div>
         <p>Please type your email address to confirm.</p>
-        <p><input type="email" id="confirm_removal" name="confirm_removal" class="form-control" placeholder="Enter your email address to confirm."></p>
-        <button type="button" href="#" class="btn btn-danger account-delete disabled">DELETE ACCOUNT</button>
+        <p><input type="email" id="confirm_removal" name="confirm_removal" class="form-control" placeholder="Enter your email address to confirm." ng-model="email" ng-pattern="/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-z]+$/" ng-change="checkEmail()"></p>
+        <button type="button" href="#" class="btn btn-danger account-delete\{{enableDelete? '':' disabled'}}" ng-click="deleteAccount()">DELETE ACCOUNT</button>
       </div>
     </div>
   </div>
