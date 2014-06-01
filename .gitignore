@@ -14,5 +14,6 @@ results
 npm-debug.log
 node_modules
 
+static/components
 usercontent
 _static

@@ -1,0 +1,26 @@
+{
+  "name": "starshard",
+  "version": "4.0.6",
+  "homepage": "https://github.com/ssiops/starshard",
+  "authors": [
+    "akasfei <akasfei@gmail.com>"
+  ],
+  "description": "Starshard - Sleek and powerful framework that runs multiple web applications on a single node.js server.",
+  "main": "server.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-bootstrap": "~0.11.0",
+    "angular-route": "~1.2.16",
+    "angular-cookies": "~1.2.16",
+    "angular-resource": "~1.2.16",
+    "angular-sanitize": "~1.2.16",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.4.0",
+    "ngprogress": "~1.0.4",
+    "angular-file-upload": "~0.5.7"
+  }
+}
