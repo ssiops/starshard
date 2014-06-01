@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <button type="button" class="navbar-toggle" ng-click="navActive = !navActive">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -10,20 +10,26 @@
       <a class="navbar-brand" href="/">Starshard</a>
     </div>
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <div class="collapse navbar-collapse navbar-ex1-collapse" collapse="navActive">
       <ul class="nav navbar-nav">
-        <li{{#if nav.index}} class="active"{{/if}}>
-          <a href="/">Home</a>
+        <li class="\{{$route.current.scope.nav == 'index' ? 'active':''}}">
+          <a href="#/">Home</a>
         </li>
-        <li{{#if nav.login}} class="active"{{/if}}>
-          <a href="/login">Login</a>
+        <li class="\{{$route.current.scope.nav == 'login' ? 'active':''}}">
+          <a href="#/login">Login</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li> <a href="https://github.com/ssiops/starshard">View on Github</a> </li>
-        <li{{#if user}} class="dropdown{{#if nav.profile}} active{{/if}}"{{/if}}> 
-          <a{{#if user}} href="#" class="dropdown-toggle" data-toggle="dropdown"{{/if}}{{#unless user}} href="/login"{{/unless}}>#!SSIOPS&gt;&gt;{{#unless user}}STD{{/unless}}{{#if user}}{{user.name}}{{/if}}</a>
-          {{#if user}}{{> nav_user_dropdown user}}{{/if}}
+        <li ng-show="!user"> <a href="#/login">#!/SS&gt;&gt;stdops</a> </li>
+        <li class="dropdown" ng-show="user"> 
+          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">#!/SS&gt;&gt;\{{user.name}}</a>
+          <ul class="dropdown-menu">
+            <li><a href="#/profile/{{user.name}}">{{user.name}}</a></li>
+            <li><a href="#/preferences">Preferences</a></li>
+            <li class="divider"></li>
+            <li><a href="#/logout">Logout</a></li>
+          </ul>
         </li>
       </ul>
     </div>
