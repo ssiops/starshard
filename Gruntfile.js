@@ -25,22 +25,27 @@ module.exports = function(grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      src: {
-        src: ['./static/js/application/*.js']
-      },
       lib: {
-        src: ['./lib/*.js']
+        src: ['./lib/**/*.js']
       }
     },
 
     uglify: {
+      options: {
+        expand: true,
+        flatten: true,
+        ext: '.min.js'
+      },
       application: {
         files: [{
-          src: './static/js/application/*.js',
-          dest: '<%= target %>/js/application',
-          expand: true,
-          flatten: true,
-          ext: '.min.js'
+          src: './lib/application/application.js',
+          dest: '<%= target %>/js/application.min.js'
+        }]
+      },
+      contollers: {
+        files: [{
+          src: '<%= target %>/js/controllers.js',
+          dest: '<%= target %>/js/controllers.min.js'
         }]
       }
     },
@@ -83,16 +88,32 @@ module.exports = function(grunt) {
         cwd: './static',
         src: '**',
         dest: '<%= target %>'
+      },
+      application: {
+        src: './lib/application/application.js',
+        dest: '<%= target %>/js/application.js'
+      }
+    },
+
+    concat: {
+      options: {
+        stripBanners: true,
+        banner: '/* Angular contollers for \n' +
+                ' * <%= pkg.name %> - v<%= pkg.version %> \n */\n',
+      },
+      controllers: {
+        src: ['./lib/application/controllers/*.js'],
+        dest: '<%= target %>/js/controllers.js'
       }
     },
 
     watch: {
-      src: {
-        files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'copy', 'uglify:application']
+      application: {
+        files: './lib/application/**/*.js',
+        tasks: ['jshint:lib', 'copy', 'uglify']
       },
       less: {
-        files: ['./less/*.less', './less/bootstrap/*.less'],
+        files: ['./less/**/*.less'],
         tasks: ['less']
       },
       static: {
@@ -105,18 +126,19 @@ module.exports = function(grunt) {
   // Load npm plugins to provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', ['less', 'uglify']);
+  grunt.registerTask('build', ['less', 'concat', 'uglify']);
 
-  grunt.registerTask('default', ['clean', 'jshint', 'build', 'copy']);
+  grunt.registerTask('default', ['clean', 'test', 'copy']);
 
   grunt.registerTask('dev', ['default', 'watch']);
 
   grunt.registerTask('test', ['jshint', 'build']);
 
-  grunt.registerTask('make', ['jshint', 'build', 'copy']);
+  grunt.registerTask('make', ['test', 'copy']);
 };
