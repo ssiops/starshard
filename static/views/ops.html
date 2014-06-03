@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>SYSTEM OPERATIONS</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="cbg">
+        <h3>ACTIVE SHARDS</h3>
+        <div class="starshard-shards list-group">
+          <a ng-href="{{shard.href}}" class="list-group-item" ng-repeat="shard in shards">
+            <h4 class="list-group-item-heading">{{shard.name}}</h4>
+            <p class="list-group-item-text">{{shard.desc}}</p>
+          </a>
+        </div>
+      </div>
+      <div class="cbg">
+        <h3>AVAILABLE USERS <a href="#" class="btn btn-success refresh-users pull-right"><i class="glyphicon glyphicon-refresh"></i></a></h3>
+        <div class="users-list">
+          <ul class="nav nav-pills nav-stacked starshard-users">
+            <li class="dropdown" data-name="{{name}}" ng-repeat="user in users">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="/profile/{{user.name}}">{{user.name}}<i class="glyphicon glyphicon-star" ng-show="user.admin"></i><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li ng-show="user.email"><a href="#">{{user.email}}</a></li>
+                <li ng-show="user.email" class="divider"></li>
+                <li ng-show="!user.admin"><a href="#" class="set-admin">SET ADMIN</a></li>
+                <li ng-show="user.admin"><a href="#" class="unset-admin">UNSET ADMIN</a></li>
+                <li><a href="#" class="remove-user">REMOVE USER</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="cbg">
+        <h3>LOGS</h3>
+        <div class="logs-filter row">
+          <div class="col-xs-8">
+            <div class="form-group">
+              <input type="text" class="form-control query-logs" placeholder="Filter logs">
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="input-group">
+              <input type="text" class="form-control query-logs-limit" placeholder="Limit">
+              <span class="input-group-btn">
+                <button class="btn btn-primary refresh-logs" type="button"><i class="glyphicon glyphicon-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="logs-list">
+          <ul class="starshard-log">
+            <li ng-repeat="log in logs">
+              <p><strong>{{log.ip}} - {{log.url}} - {{log.tag}}</strong></p>
+              <pre>
+{{log.date}}
+{{log.ua}}
+{{log.msg}}
+              </pre>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

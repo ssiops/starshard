@@ -1,0 +1,57 @@
+<div class="container spaced-top">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="cbg">
+        <ul class="list-group">
+          <a href="/profile/{{user.name}}" class="list-group-item active">{{user.name}}</a>
+          <a href="#profile-img" class="list-group-item">Update profile image</a>
+          <a href="#password" class="list-group-item">Change password</a>
+          <a href="#remove-account" class="list-group-item">Delete account</a>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <form id="profile-img" action="/usercontent/profile" method="post" enctype="multipart/form-data" class="cbg">
+        <h3>Update profile image</h3>
+        <input type="file" name="img" accept="image/*">
+        <p>Your profile should be at least 480px * 480px large.</p>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+      <div id="password" class="cbg form-horizontal">
+        <h3>Change password</h3>
+        <div class="form-group">
+          <label for="password_o" class="control-label col-md-3">Old Password</label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" id="password_o" name="password_o" placeholder="Old Password" ng-model="form.password_o">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_n" class="control-label col-md-3">New Password</label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" id="password_n" name="password" placeholder="New Password" ng-model="form.password_n">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password_r" class="control-label col-md-3">Retype Password</label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" id="password_r" name="password" placeholder="Retype Password" ng-model="form.password_r">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-9 col-md-offset-3">
+            <button type="button" href="#" class="btn btn-primary password-update">Update Password</button>
+          </div>
+        </div>
+      </div>
+      <div id="remove-account" class="cbg form-horizontal">
+        <h3>Delete account</h3>
+        <div class="alert alert-danger">
+          <p>Danger! This will delete your account and all its data. This action cannot be undone.</p>
+        </div>
+        <p>Please type your email address to confirm.</p>
+        <p><input type="email" id="confirm_removal" name="confirm_removal" class="form-control" placeholder="Enter your email address to confirm."></p>
+        <button type="button" href="#" class="btn btn-danger account-delete disabled">DELETE ACCOUNT</button>
+      </div>
+    </div>
+  </div>
+</div>
