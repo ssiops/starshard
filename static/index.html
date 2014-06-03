@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Starshard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starshard - Sleek and powerful framework that runs multiple web applications on a single node.js server.">
+    <meta name="author" content="akasfei">
+
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/img/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/img/ico/favicon.png">
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body ng-app="starshard">
+    <!--[if lt IE 9]>
+    <script src="/components/es5-shim/es5-shim.min.js"></script>
+    <script src="/components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- bower:js -->
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/angular-route/angular-route.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/ngprogress/build/ngProgress.js"></script>
+    <script src="components/angular-file-upload/angular-file-upload.js"></script>
+    <!-- endbower -->
+
+    <script src="/js/application/application.min.js"></script>
+    <script src="/js/application/controllers.min.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <!--
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+    -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="navActive = !navActive">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Starshard</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse" collapse="navActive">
+          <ul class="nav navbar-nav">
+            <li class="{{$route.current.scope.nav == 'index' ? 'active':''}}">
+              <a href="#/">Home</a>
+            </li>
+            <li class="{{$route.current.scope.nav == 'login' ? 'active':''}}">
+              <a href="#/login">Login</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li> <a href="https://github.com/ssiops/starshard">View on Github</a> </li>
+            <li ng-show="!user"> <a href="#/login">#!/SS&gt;&gt;stdops</a> </li>
+            <li class="dropdown" ng-show="user">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">#!/SS&gt;&gt;{{user.name}}</a>
+              <ul class="dropdown-menu">
+                <li><a href="#/profile/{{user.name}}">{{user.name}}</a></li>
+                <li><a href="#/preferences">Preferences</a></li>
+                <li class="divider"></li>
+                <li><a href="#/logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="float-msg active" ng-controller="FloatMsgCtrl" ng-show="show">
+      <div class="alert alert-{{style}}">
+        <p>{{msg}} <a href="jaascript:void(0)" class="float-msg-dismiss" ng-click="show=false;">Dismiss</a></p>
+      </div>
+    </div>
+
+    <!--[if lt IE 7]>
+    <div class="container jumbotron">
+      <h2>#!/bin/upgrade</h2>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    </div>
+    <![endif]-->
+
+    <div ng-view=""></div>
+
+    <footer class="signature">
+      <h6>&copy;2014 SFEI Systems Inc.; All Rights Reserved.</h6>
+      <h6>Designed and Developed by <a href="http://sfeisystems.net">SFEI Systems Inc.</a></h6>
+      <p><a href="https://www.ingress.com" class="btn btn-primary" target="_blank">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAqCAYAAADS4VmSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAg5JREFUeNrsV4txwjAMJVwGyAgZIZ2gzgRNJ6iZgHYC6AS0E4ROQDsBMEHYADaADVzpkDmdL/41Ib1reXc6t7YsvciSbEajG/47EnNCKSVheArY+5UkyRvteYbhIWDPB+xZ8olxi1IOIkAyh6EdOgfHGQoR2Tn0M7KZeymCwbk6Q3j0CpAjSeHRFWRzbq6lno2u4xDsqxvQ3djCDnKw+Ug9AdHHYcMLjWuH3rYLAY0lfQnHAqTWOcHIaGDkpM9wKAFMtI1xPCUMe/r3DtZPxvo0xPDYs65DV4HBNWb8pX7PDpFEyZ1TZeCRVIaNMJhVAGNFma5oFJ5s57pVpyqgL/2EjXjGKxAsN4zEK537PUs0XJuxnHiEvYfo1ujqAzBXKz/qmD4wjurbSTKBAeXUsoxzE9IJRhobIezl8CX455TCrkP+bvb5PqrAVR289++is70jAWE0GenpmP0SgFDPqQdolDQ3WAR6w41AGticCrr9gu74a/SBzMjy7dAEOEpynv8WgRmLSv+g6xfR6PufXSY2uK7ojGwpfT2HkJC0Ya9fvJ6bUDheznvSkbGRkOxhoUks2FzjIsCe7fHOjeM4GiQkPc+EjYDxm6HqmhPcmH6m5TYC7Fnm/cHyExKXcNKcRmE7tj6ro42EYFG5nnNLScmWhG34030IEjUrz+s7t5AY1rlBYkUyrPMb/hS+BRgA20DAoY5EVnUAAAAASUVORK5CYII=" style="width:16px;height:21px">
+      Join the Resistance!</a></p>
+    </footer>
+
+  </body>
+</html>
+
+<!-- Prepare to die in agony for the glory of the Sierra Empire! -->
+<!--  Designed and developed by Sierra Six of SFEI Systems Inc.  -->
+<!--                     akasfei@gmail.com                       -->
