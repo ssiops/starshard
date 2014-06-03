@@ -30,10 +30,23 @@ module.exports = function(grunt) {
       }
     },
 
+    bowerInstall: {
+      target: {
+        src: './static/index.html',
+        dependencies: true,
+        devDependencies: false,
+        exclude: ['es5-shim', 'json3'],
+        fileTypes: {},
+        ignorePath: '',
+        overrides: {}
+      }
+    },
+
     uglify: {
       options: {
         expand: true,
         flatten: true,
+        sourceMap: true,
         ext: '.min.js'
       },
       application: {
@@ -131,8 +144,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-bower-install');
 
-  grunt.registerTask('build', ['less', 'concat', 'uglify']);
+  grunt.registerTask('build', ['less', 'concat', 'uglify', 'bowerInstall']);
 
   grunt.registerTask('default', ['clean', 'test', 'copy']);
 
